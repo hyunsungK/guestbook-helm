@@ -1,4 +1,6 @@
 # guestbook-helm
+This repo is for deploying guestbook application using helm.
+
 
 ## Goal
 - Understanding the Guestbook application
