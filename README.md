@@ -84,5 +84,102 @@ guestbook/charts
 
 - show value
 ```
-helm show values guestbook/charts/redis-17.3.8.tgz
+✗ helm show values guestbook/charts/redis-17.3.8.tgz
+```
+
+### Application Configuration
+
+- Configure values.yaml
+```yaml
+replicaCount: 1
+
+image:
+  repository: gcr.io/google-samples/gb-frontend
+  pullPolicy: IfNotPresent
+  tag: ""
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+serviceAccount:
+  create: true
+  annotations: {}
+  name: ""
+
+podAnnotations: {}
+podSecurityContext: {}
+securityContext: {}
+service:
+  type: ClusterIP
+  port: 80
+
+ingress:
+  enabled: false
+  className: ""
+  annotations: {}
+  hosts:
+    - host: chart-example.local
+      paths: []
+  tls: []
+
+resources: {}
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 100
+  targetCPUUtilizationPercentage: 80
+
+nodeSelector: {}
+tolerations: []
+affinity: {}
+
+# 추가 영역
+redis:
+  fullnameOverride: redis
+  usePassword: false
+  configmap: |-
+    appendonly no
+```
+
+- Installing application
+```
+✗ helm install my-guestbook guestbook -n chapter5
+```
+
+- Verifying release
+```
+✗ helm list -A
+NAME            NAMESPACE       REVISION        UPDATED                                 STATUS          CHART           APP VERSION
+my-guestbook    chapter5        1               2022-11-08 17:06:48.366465 +0900 KST    deployed        guestbook-0.1.0 1.16.0
+```
+
+- Upgrading release
+```
+✗ helm upgrade my-guestbook ./guestbook -n chapter5
+```
+
+- Port forwarding pod
+```
+✗ export POD_NAME=$(kubectl get pods --namespace chapter5 -l "app.kubernetes.io/name=guestbook,app.kubernetes.io/instance=my-guestbook" -o jsonpath="{.items[0].metadata.name}")
+✗ export CONTAINER_PORT=$(kubectl get pod --namespace chapter5 $POD_NAME -o jsonpath="{.spec.containers[0].ports[0].containerPort}")
+✗ echo "Visit http://127.0.0.1:8080 to use your application"
+✗ kubectl --namespace chapter5 port-forward $POD_NAME 8080:$CONTAINER_PORT
+```
+
+- Deleting namespace
+```
+✗ kubectl delete namespace chapter5
+```
+
+## Think about it
+
+P1. 왜 Jenkinsfile이 charts 상위에 위치하는가?
+P2. charts 아래 `guestbook` 과 `nginx`가 별도로 있는 이유는?
+```
+.
+└── charts
+    ├── guestbook
+    └── nginx
+└── Jenkinsfile
 ```

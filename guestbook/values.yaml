@@ -5,10 +5,10 @@
 replicaCount: 1
 
 image:
-  repository: nginx
+  repository: gcr.io/google-samples/gb-frontend
+  tag: v4
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: ""
 
 imagePullSecrets: []
 nameOverride: ""
@@ -48,9 +48,7 @@ ingress:
     # kubernetes.io/tls-acme: "true"
   hosts:
     - host: chart-example.local
-      paths:
-        - path: /
-          pathType: ImplementationSpecific
+      paths: []
   tls: []
   #  - secretName: chart-example-tls
   #    hosts:
@@ -80,3 +78,10 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
+
+# redis
+redis:
+  fullnameOverride: redis
+  usePassword: false
+  configmap: |-
+    appendonly no
