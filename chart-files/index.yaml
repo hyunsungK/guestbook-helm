@@ -3,7 +3,7 @@ entries:
   guestbook:
   - apiVersion: v2
     appVersion: 1.16.1
-    created: "2022-11-09T13:15:56.549681+09:00"
+    created: "2022-11-09T13:51:13.505189+09:00"
     dependencies:
     - name: redis
       repository: https://charts.bitnami.com/bitnami
@@ -13,11 +13,11 @@ entries:
     name: guestbook
     type: application
     urls:
-    - guestbook-0.1.1.tgz
+    - https://https:/hyunsungk.github.io/guestbook-helm/chart-files/guestbook-0.1.1.tgz
     version: 0.1.1
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2022-11-09T13:15:56.54126+09:00"
+    created: "2022-11-09T13:51:13.498113+09:00"
     dependencies:
     - name: redis
       repository: https://charts.bitnami.com/bitnami
@@ -27,6 +27,6 @@ entries:
     name: guestbook
     type: application
     urls:
-    - guestbook-0.1.0.tgz
+    - https://https:/hyunsungk.github.io/guestbook-helm/chart-files/guestbook-0.1.0.tgz
     version: 0.1.0
-generated: "2022-11-09T13:15:56.532782+09:00"
+generated: "2022-11-09T13:51:13.490367+09:00"

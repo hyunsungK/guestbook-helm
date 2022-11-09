@@ -31,3 +31,6 @@ helm search repo guestbook
 ```
 helm install guestbook myrepo/guestbook
 ```
+
+## Reference
+- [Best Practice](https://yunsangjun.github.io/helm/2018/05/26/hosting-helm-chart-repository.html)
