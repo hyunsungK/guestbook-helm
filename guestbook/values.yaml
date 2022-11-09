@@ -15,7 +15,9 @@ env:
   - name: "USERNAME"
     value: "test1"
   - name: "PASSWORD"
-    value: "test2" 
+    value: "test2"
+  - name: "ID"
+    value: "test_id"
 
 imagePullSecrets: []
 nameOverride: ""

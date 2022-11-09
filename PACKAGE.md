@@ -32,5 +32,10 @@ helm search repo guestbook
 helm install guestbook myrepo/guestbook
 ```
 
+## Indexing url
+```
+helm repo index chart-files  --url https://https://hyunsungk.github.io/guestbook-helm/chart-files
+```
+
 ## Reference
 - [Best Practice](https://yunsangjun.github.io/helm/2018/05/26/hosting-helm-chart-repository.html)
