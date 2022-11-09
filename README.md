@@ -174,6 +174,16 @@ my-guestbook    chapter5        1               2022-11-08 17:06:48.366465 +0900
 ✗ kubectl delete namespace chapter5
 ```
 
+- Linting helm chart
+```
+✗ helm lint guestbook ./guestbook
+```
+
+- Dry running application
+```
+✗ helm install guestbook ./guestbook  --dry-run
+```
+
 ## Think about it
 
 P1. 왜 Jenkinsfile이 charts 상위에 위치하는가?
